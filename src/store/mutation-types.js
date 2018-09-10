@@ -1,0 +1,2 @@
+export const MUTATIONAGE="MUTATIONAGE";
+export const MUTATIONNAME="MUTATIONNAME";
