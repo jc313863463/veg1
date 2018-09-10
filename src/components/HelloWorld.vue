@@ -1,100 +1,43 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1></h1>
     <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <span>{{name}}</span>
+    <span>{{age}}</span>
+    <span>{{gettersNA}}</span>
+    <span>{{gettersAge}}</span>
+    <input type="button" name="" value="12345" @click="con()">
+    <input type="button" name="" value="123451" @click="MUTATIONAGE(1)">
+    <input type="button" name="" value="123452" @click="MUTATIONNAME(2)">
+    <input type="button" name="" value="2222" @click='actionsA(12233)'>
   </div>
 </template>
 
 <script>
+  import {mapState} from "vuex"
+  import {mapGetters} from "vuex"
+  import {mapActions} from "vuex"
+  import {mapMutations} from "vuex"
 export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+    data:function(){
+      return {}
+    },
+    computed:{
+      ...mapState(['name','age']),
+      ...mapGetters(['gettersNA','gettersAge'])
+    },
+  methods:{
+    con(){
+      console.log(this.$store)
+    },
+    ...mapMutations(['MUTATIONAGE','MUTATIONNAME']),
+    actionsA(data){
+      this.$store.dispatch('actionAge',data)
     }
-  }
+  },
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
